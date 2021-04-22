@@ -8,14 +8,18 @@ module.exports = {
 
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: 'index.js',
+        filename: 'index.min.js',
     },
 
     module: {
         rules: [
             {
-                test: /\.ts/,
+                test: /\.ts$/,
                 loader: 'ts-loader',
+            },
+            {
+                test: /\.html$/,
+                loader: 'html-loader',
             },
         ],
     },
@@ -25,7 +29,7 @@ module.exports = {
     },
 
     plugins: [
-        new HtmlWebpackPlugin()
+        new HtmlWebpackPlugin({ template: './src/index.html' })
     ],
 
     experiments: {
