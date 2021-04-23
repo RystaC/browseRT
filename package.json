@@ -9,7 +9,9 @@
     "build:wasm": "wasm-bindgen ./raytrace/target/wasm32-unknown-unknown/release/main.wasm --out-dir ./src/wasm",
     "build:webpack": "webpack",
     "serve": "webpack serve",
-    "clean": "rimraf ./build/*.wasm"
+    "clean": "run-p clean:*",
+    "clean:build": "rimraf ./build/*.wasm ./build/*.html ./build/*.css ./build/*.js",
+    "clean:wasm": "rimraf ./src/wasm/*.wasm ./src/wasm/*.js ./src/wasm/*.ts"
   },
   "keywords": [],
   "author": "",
