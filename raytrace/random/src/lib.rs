@@ -25,8 +25,8 @@ impl Random {
         min + self.next() % (max - min)
     }
 
-    pub fn next_1byte(&mut self) -> u64 {
-        self.next_bound(0, 256)
+    pub fn next_1byte(&mut self) -> u8 {
+        self.next_bound(0, 256) as u8
     }
 
     pub fn next_f(&mut self) -> f64 {
