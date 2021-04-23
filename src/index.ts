@@ -11,17 +11,7 @@ import('./wasm/main').then(module => {
 
     let imageData = ctx.createImageData(width, height)
 
-    const data = noise_image(width, height)
-    console.log(data)
-
-    let idx = 0;
-
-    for(let i = 0; i < imageData.width * imageData.height * 4;) {
-        imageData.data[i++] = data[idx++]
-        imageData.data[i++] = data[idx++]
-        imageData.data[i++] = data[idx++]
-        imageData.data[i++] = 255
-    }
+    imageData.data.set(noise_image(width, height))
 
     ctx.putImageData(imageData, 0, 0)
 })
