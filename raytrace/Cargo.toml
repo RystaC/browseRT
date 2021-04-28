@@ -1,3 +1,7 @@
 [workspace]
 
-members = ["main", "random"]
+members = [
+    "main",
+    "random",
+    "vector"
+]
