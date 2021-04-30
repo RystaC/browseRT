@@ -10,4 +10,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 random = { path = "../random" }
+vector = { path = "../vector" }
 wasm-bindgen = "0.2.73"

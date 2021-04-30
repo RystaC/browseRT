@@ -3,5 +3,5 @@
 members = [
     "main",
     "random",
-    "vector"
+    "vector",
 ]

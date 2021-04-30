@@ -1,26 +1,22 @@
 use wasm_bindgen::prelude::*;
 
 use random::Random;
-
-struct Color {
-    r: u8,
-    g: u8,
-    b: u8,
-    a: u8,
-}
+use vector::Color;
 
 #[wasm_bindgen]
 pub fn noise_image(width: usize, height: usize) -> Vec<u8> {
     let size = width * height;
-    let mut rand = Random::new();
     let mut color = Vec::<Color>::with_capacity(size);
-    for _ in 0..size { color.push(Color { r: rand.next_1byte(), g: rand.next_1byte(), b: rand.next_1byte(), a: 255 })};
-    let mut result = Vec::with_capacity(size * 4);
+    color.resize(size, Color::from_val(1.0, 0.0, 0.0));
+
+    let mut buffer = Vec::<u8>::with_capacity(size * 4);
     for c in color {
-        result.push(c.r);
-        result.push(c.g);
-        result.push(c.b);
-        result.push(c.a);
-    }
-    result
+        let byte = c.as_bytes(255);
+        buffer.push(byte[0]);
+        buffer.push(byte[1]);
+        buffer.push(byte[2]);
+        buffer.push(byte[3]);
+    };
+
+    buffer
 }
